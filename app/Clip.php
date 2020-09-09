@@ -13,7 +13,7 @@ class Clip extends Model
     public function user(): BelongsTo{
         return $this -> belongsTo('App\User');
     }
-    // いいねテーブル
+    // likesテーブル
     public function likes(): BelongsToMany {
         return $this -> belongsToMany('App\User','likes')->withTimestamps();
     }
@@ -25,4 +25,10 @@ class Clip extends Model
     public function getLikesCountAttribute(){
         return $this->likes->count();
     }
+    
+    // tagsテーブル
+    public function tags(): BelongsToMany {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
+    }
+    
 }

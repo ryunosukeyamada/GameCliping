@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ClipRequest;
 
 use App\Clip;
+use App\Tag;
 
 use Google_Client;
 use Google_Service_YouTube;
@@ -23,7 +24,7 @@ class ClipController extends Controller
     // クリップ一覧
     public function index()
     {
-        $clips = Clip::with(['likes','user'])->orderBy('created_at', 'desc')->paginate(8);
+        $clips = Clip::with(['likes','user','tags'])->orderBy('created_at', 'desc')->paginate(8);
         return view('clips.index', ['clips' => $clips]);
 
 
@@ -34,10 +35,11 @@ class ClipController extends Controller
         // $thumnail = $video_snippet['thumbnails']['maxres'] -> url;
     }
     // クリップいいね順
-    public function indexLikes() {
+    public function indexLikes()
+    {
         $clips = Clip::with(['user', 'likes'])->withCount('likes')->orderBy('likes_count', 'desc')->paginate(8);
         // dd($clips);
-        return view('clips.index_likes',['clips' => $clips]);
+        return view('clips.index_likes', ['clips' => $clips]);
     }
 
 
@@ -52,7 +54,7 @@ class ClipController extends Controller
         $clip->fill($request->all());
         $clip->user_id = $request->user()->id;
 
-        // ユーザーからのビデオIDの取得
+        // ユーザーが入力したビデオIDの取得
         $video_id = $request->video_id;
 
         // YOUTUBE URLも対応 {文字列変換}
@@ -64,7 +66,7 @@ class ClipController extends Controller
             }
         }
         // レコードにVideo_IDを保存挿入
-        $clip->video_id=$video_id;
+        $clip->video_id = $video_id;
 
         // dd($video_id);
 
@@ -84,6 +86,13 @@ class ClipController extends Controller
 
         // レコードを保存
         $clip->save();
+
+        // タグの登録
+        $request->tags->each(function ($tagName) use ($clip) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $clip->tags()->attach($tag);
+        });
+
         // リダイレクト
         return redirect()->route('clips.index');
     }
@@ -114,17 +123,19 @@ class ClipController extends Controller
     }
 
     // いいね！
-    public function like(Request $request, Clip $clip) {
+    public function like(Request $request, Clip $clip)
+    {
         $clip->likes()->detach($request->user()->id);
-        $clip->likes()->attach($request->user()->id); 
+        $clip->likes()->attach($request->user()->id);
 
-        return['countLikes' => $clip->likes_count];
+        return ['countLikes' => $clip->likes_count];
     }
 
     // いいね解除
-    public function unlike(Request $request, Clip $clip) {
+    public function unlike(Request $request, Clip $clip)
+    {
         $clip->likes()->detach($request->user()->id);
 
-        return['countLikes' => $clip->likes_count];
+        return ['countLikes' => $clip->likes_count];
     }
 }

@@ -44,8 +44,20 @@
             <a class="card-text " href="{{ route('users.show', ['name' => $clip->user->name]) }}">
                 {{ $clip->user->name }}
             </a>
-
-            <p class="mt-2">{ここにタグが入ります}</p>
+            <!-- タグ -->
+            @foreach ($clip->tags as $tag)
+                @if ($loop->first)
+                    <div class="card-body p-0 mt-2">
+                        <div class="card-text line-height">
+                @endif
+                <a href="" class="border p-1 mr-1 text-primary">
+                    {{ $tag->name }}
+                </a>
+                @if ($loop->last)
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
     </div>
 
@@ -68,17 +80,14 @@
                 {{ $clip->created_at->format('m/d H:i') }}
             </small>
 
-            <!-- いいねボタン -->   
+            <!-- いいねボタン -->
             <div class="float-right">
-                <clip-like
-                :initial-is-liked-by="@json($clip->isLikedBy(Auth::user()))"
-                :initial-count-likes="@json($clip->likes_count)"
-                :login-check="@json(Auth::check())"
-                url="{{ route('like', ['clip'=>$clip]) }}"
-                >
+                <clip-like :initial-is-liked-by="@json($clip->isLikedBy(Auth::user()))"
+                    :initial-count-likes="@json($clip->likes_count)" :login-check="@json(Auth::check())"
+                    url="{{ route('like', ['clip' => $clip]) }}">
                 </clip-like>
             </div>
-            <!-- いいねボタン -->   
+            <!-- いいねボタン -->
 
         </div>
     </div>

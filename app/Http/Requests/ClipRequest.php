@@ -25,15 +25,26 @@ class ClipRequest extends FormRequest
     {
         return [
             'title' => 'required|max:30',
-            'video_id' => 'min:11|max:55',
+            'video_id' => 'string|min:11|max:55',
+            'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
         ];
     }
     public function attributes()
     {
-        return[
+        return [
             'title' => 'クリップタイトル',
             'video_id' => 'Youtube VIDEO_ID',
+            'tags' => 'タグ'
         ];
     }
 
+    // タグをJson形式からコレクションに
+    public function passedValidation()
+    {
+        $this->tags = collect(json_decode($this->tags))
+        ->slice(0,3)
+        ->map(function($requestTag) {
+            return $requestTag ->text;
+        });
+    }
 }
