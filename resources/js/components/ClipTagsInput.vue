@@ -74,3 +74,8 @@ export default {
     max-width: inherit;
   }
 </style>
+<style lang="css">
+  .vue-tags-input .ti-tag::before {
+    content:'#';
+  }
+</style>
