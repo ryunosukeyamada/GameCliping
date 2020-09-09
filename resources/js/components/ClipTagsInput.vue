@@ -18,10 +18,16 @@ export default {
   components: {
     VueTagsInput,
   },
+  props: {
+    initialTags: {
+      type: Array,
+      default: [],
+    }
+  },
   data() {
     return {
       tag: '',
-      tags: [],
+      tags: this.initialTags,
       autocompleteItems: [{
         text: 'FPS'
       },{
@@ -29,11 +35,11 @@ export default {
       },{
         text: 'VALORANT'
       },{
-        text: 'Fall Guys'
+        text: 'FallGuys'
       },{
         text: 'Spellbreak'
       },{
-        text: 'Hyper Scape'
+        text: 'HyperScape'
       }, {
         text: 'COD'
       },{
@@ -46,6 +52,8 @@ export default {
         text: 'CSGO'
       }, {
         text: '虹6'
+      },{
+        text:'BlackSquad'
       }],
     };
   },

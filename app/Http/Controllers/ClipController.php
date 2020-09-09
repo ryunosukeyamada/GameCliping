@@ -24,7 +24,7 @@ class ClipController extends Controller
     // クリップ一覧
     public function index()
     {
-        $clips = Clip::with(['likes','user','tags'])->orderBy('created_at', 'desc')->paginate(8);
+        $clips = Clip::with(['likes', 'user', 'tags'])->orderBy('created_at', 'desc')->paginate(8);
         return view('clips.index', ['clips' => $clips]);
 
 
@@ -88,8 +88,8 @@ class ClipController extends Controller
         $clip->save();
 
         // タグの登録
-        $request->tags->each(function ($tagName) use ($clip) {
-            $tag = Tag::firstOrCreate(['name' => $tagName]);
+        $request->tags->each(function ($item) use ($clip) {
+            $tag = Tag::firstOrCreate(['name' => $item]);
             $clip->tags()->attach($tag);
         });
 
@@ -106,12 +106,21 @@ class ClipController extends Controller
     // クリップ編集フォーム
     public function edit(Clip $clip)
     {
-        return view('clips.edit_form', ['clip' => $clip]);
+        $tagNames = $clip->tags->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+        return view('clips.edit_form', ['clip' => $clip, 'tagNames' => $tagNames]);
     }
     // クリップ編集 リダイレクト
     public function update(ClipRequest $request, Clip $clip)
     {
         $clip->fill($request->all())->save();
+        $clip->tags()->detach();
+        $request->tags->each(function ($item) use ($clip) {
+            $tag = Tag::firstOrCreate(['name' => $item]);
+            $clip->tags()->attach($tag);
+        });
+
         return redirect()->route('clips.index');
     }
 

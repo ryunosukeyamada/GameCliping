@@ -34,7 +34,8 @@
                     </div>
 
                     <div class="form-group">
-                        <clip-tags-input>
+                        <clip-tags-input
+                        :initial-tags='@json($tagNames)'>
 
                         </clip-tags-input>
                     </div>
