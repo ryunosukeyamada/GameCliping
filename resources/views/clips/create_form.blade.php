@@ -32,6 +32,12 @@
                         <small style="color: rgba(128, 128, 128, 0.5)">MAX30</small>
                     </div>
 
+                    <div class="form-group">
+                        <clip-tags-input>
+
+                        </clip-tags-input>
+                    </div>
+
                     <div class="md-form mt-5">
                         <label for="video_id">Youtube VIDEO_ID (YoutubeURLでも可)</label>
                         <input type="text" id="video_id" class="form-control" name="video_id" required>
