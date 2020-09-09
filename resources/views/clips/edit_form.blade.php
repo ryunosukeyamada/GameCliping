@@ -7,7 +7,8 @@
 @section('content')
     <div class="container">
         <h1 class="text-center mt-3">
-            <a href="{{ route('clips.index') }}"><img width="150px" src="{{ asset('img/GameClipingLogo.png') }}"alt="logo"></a>
+            <a href="{{ route('clips.index') }}"><img width="150px" src="{{ asset('img/GameClipingLogo.png') }}"
+                    alt="logo"></a>
         </h1>
 
         <div class="card mt-5">
@@ -30,6 +31,12 @@
                         <input type="text" id="title" class="form-control" name="title" required value="{{ $clip->title }}">
                         <label for="title">クリップタイトル</label>
                         <small style="color: rgba(128, 128, 128, 0.5)">MAX25</small>
+                    </div>
+
+                    <div class="form-group">
+                        <clip-tags-input>
+
+                        </clip-tags-input>
                     </div>
 
                     <div class="md-form mt-5">

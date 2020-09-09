@@ -87,7 +87,7 @@
                     </small><br>
                     <small>上の例では<span class="text-danger">赤文字</span>の箇所をコピーして貼り付ければOK</small><br>
                     <hr>
-                    <small><span class="text-warning">(非推奨)</span>それでもわからない場合はURLそのものをコピ-&ペーストでも可</small>
+                    <small><span class="text-warning">(非推奨)</span>わからない場合はURLそのものをコピ-&ペーストでも可</small>
 
                 </div>
 
