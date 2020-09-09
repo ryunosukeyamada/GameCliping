@@ -17,7 +17,7 @@ class ClipController extends Controller
     // 認可（ポリシーの設定）
     public function __construct()
     {
-        $this->authorizeResource('App\Clip', 'clip');
+        // $this->authorizeResource('App\Clip', 'clip');
     }
 
 

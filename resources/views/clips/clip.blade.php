@@ -50,7 +50,7 @@
                     <div class="card-body p-0 mt-2">
                         <div class="card-text line-height">
                 @endif
-                <a href="" class="border p-1 mr-1 text-primary">
+                <a href="{{ route('tags.show',['name' => $tag->name]) }}" class="border p-1 mr-1 text-primary">
                     {{ $tag->hash_tag }}
                 </a>
                 @if ($loop->last)
