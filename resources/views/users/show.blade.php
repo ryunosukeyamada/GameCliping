@@ -25,6 +25,7 @@
             </div>
         </div>
     </div>
+    @include('layouts.paginate')
 
 
 
