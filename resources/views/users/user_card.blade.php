@@ -32,11 +32,16 @@
             </div>
 
             <!-- フォローコンポーネント -->
-            @if (Auth::user()->id !== $user->id)
-                <div class="mb-5">
-                    <follow></follow>
-                </div>
-            @endif
+                @if (Auth::id() !== $user->id)
+                    <div class="mb-5">
+                        <follow
+                        :initial-is-followd-by='@json($user->isFollowdBy(Auth::user()))'
+                        :login-check='@json(Auth::check())'
+                        url="{{ route('users.follow', ['name' => $user->name]) }}"
+                        >
+                    </follow>
+                    </div>
+                @endif
 
             <div class="card-body p-0 mt-3">
                 <div class="card-text">
