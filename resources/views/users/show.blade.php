@@ -14,7 +14,7 @@
     </div>
 
     <div class="container">
-        @include('users.tabs',['clip'=>true,'like'=>false])
+        @include('users.tabs',['clip'=>true,'like'=>false,'follows'=>false,'followers'=>false])
         <div class="tab-content" id="myTabContent">
             <div class="row">
                 @foreach ($clips as $clip)

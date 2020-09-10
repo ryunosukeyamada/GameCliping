@@ -1,8 +1,7 @@
 @extends('layouts.html_template')
 
 @section('head')
-    <title>{{ $user->name }}</title>
-    <link rel="stylesheet" href="{{ asset('css/index.css ') }}">
+    <title>{{ $user->name }}のフォロワー</title>
 @endsection
 
 @section('content')
@@ -14,19 +13,18 @@
     </div>
 
     <div class="container">
-        @include('users.tabs',['clip'=>false,'like'=>true,'follows'=>false,'followers'=>false])
+        @include('users.tabs',['clip'=>false,'like'=>false,'follows'=>false,'followers'=>true])
         <div class="tab-content">
             <div class="row">
-                @foreach ($clips as $clip)
+                @foreach ($followerUsers as $user)
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        @include('clips.clip')
+                      @include('users.user_small_card')
                     </div>
                 @endforeach
             </div>
         </div>
+        <div class="mt-5 d-flex justify-content-center">
+            {{ $followerUsers->links('pagination.default') }}
+        </div>
     </div>
-    @include('layouts.paginate')
-
-
-
 @endsection

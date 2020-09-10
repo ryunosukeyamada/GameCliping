@@ -9,4 +9,14 @@
             いいね
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link text-muted {{ $follows? 'active peach-gradient':'' }}" href="{{ route('users.follows', ['name' => $user->name]) }}">
+            フォロー
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-muted {{ $followers? 'active peach-gradient':'' }}" href="{{ route('users.followers', ['name' => $user->name]) }}">
+            フォロワー
+        </a>
+    </li>
 </ul>

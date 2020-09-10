@@ -17,12 +17,25 @@ class UserController extends Controller
         $clips = $user->clips()->orderBy('created_at', 'desc')->paginate(8);
         return view('users.show', ['user' => $user,'clips' => $clips]);
     }
-    // ユーザーいいね
+    // ユーザーいいね一覧
     public function likes(String $name) {
         $user = User::where('name', $name)->first();
         $clips= $user->likes()->orderBy('created_at','desc')->paginate(8);
 
         return view('users.likes', ['user' => $user,'clips'=>$clips]);
+    }
+    // ユーザーフォロー一覧
+    public function follows(string $name) {
+        $user = User::where('name',$name)->first();
+        $followUsers= $user->follows()->orderBy('created_at', 'desc')->paginate(12);
+        return view('users.follows',['user'=>$user,'followUsers'=>$followUsers]);
+    }
+    // ユーザーフォロワー一覧
+    public function followers(string $name)
+    {
+        $user = User::where('name', $name)->first();
+        $followerUsers = $user->followers()->orderBy('created_at', 'desc')->paginate(12);
+        return view('users.followers', ['user' => $user, 'followerUsers' => $followerUsers]);
     }
 
     // プロフィール画像編集
