@@ -7,7 +7,7 @@ use App\Http\Requests\ClipRequest;
 
 use App\Clip;
 use App\Tag;
-
+use App\User;
 use Google_Client;
 use Google_Service_YouTube;
 
@@ -40,6 +40,12 @@ class ClipController extends Controller
         $clips = Clip::with(['user', 'likes'])->withCount('likes')->orderBy('likes_count', 'desc')->paginate(8);
         // dd($clips);
         return view('clips.index_likes', ['clips' => $clips]);
+    }
+    // 自分のクリップ
+    public function myClip(Request $request) {
+        $user = $request->user();
+        $clips = $user->clips()->orderBy('created_at','desc')->paginate(8);
+        return view('clips.index_myclips',['user' => $user,'clips'=>$clips]);
     }
 
 

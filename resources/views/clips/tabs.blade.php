@@ -11,7 +11,7 @@
     </li>
     @auth
         <li class="nav-item">
-            <a class="nav-link text-muted {{ $myClip? 'active':''}}" href="">
+            <a class="nav-link text-muted {{ $myClip? 'active':''}}" href="{{ route('clips.index.myclip') }}">
                 自分の投稿
             </a>
         </li>

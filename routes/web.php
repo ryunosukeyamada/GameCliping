@@ -20,10 +20,13 @@ Route::get('/', 'TopController@show')->name('top');
 
 // 投稿一覧
 Route::get('/home', 'ClipController@index')->name('clips.index');
+// 投稿一覧自分の投稿
+Route::get('/home/myclip', 'ClipController@myClip')->name('clips.index.myclip');
 // 投稿一覧いいね順
 Route::get('/home/likes', 'ClipController@indexLikes')->name('clips.index.likes');
 // 投稿一覧タグ別
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
+
 
 
 Route::resource('/clips', 'ClipController', ['except' => ['index', 'show']])->middleware('auth');
