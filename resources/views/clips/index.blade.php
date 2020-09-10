@@ -17,7 +17,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="mt-5">
+        <div class="mt-5 d-flex justify-content-center">
             {{ $clips->links() }}
         </div>
     </div>

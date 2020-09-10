@@ -7,8 +7,8 @@
 
             <!-- ユーザートップ画像 -->
             <div class="text-center">
-                <img src="{{ asset('storage/profiles/'. $user->profile_image) }}" class="rounded-circle" height="220px" width="220px"
-                    alt="Userトップ画像">
+                <img src="{{ asset('storage/profiles/' . $user->profile_image) }}" class="rounded-circle" height="220px"
+                    width="220px" alt="Userトップ画像">
             </div>
             @auth
                 @if (Auth::user()->name === $user->name)
@@ -25,9 +25,19 @@
             <!-- ユーザーネーム -->
             <h4 class="h4 mb-4 green-text"><i class="mr-2 far fa-user-circle"></i>{{ $user->name }}</h4>
 
-            <div class="mb-5">
-                <follow></follow>
+            <div class="card-body">
+                <div class="card-text">
+                    <p>どうもみなさんこんにちは</p>
+                </div>
             </div>
+
+            <!-- フォローコンポーネント -->
+            @if (Auth::user()->id !== $user->id)
+                <div class="mb-5">
+                    <follow></follow>
+                </div>
+            @endif
+
             <div class="card-body p-0 mt-3">
                 <div class="card-text">
                     <a href="" class="text-muted mr-1">10 フォロー</a>
@@ -42,7 +52,8 @@
 
 
 {{-- モーダル --}}
-<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -53,7 +64,8 @@
             </div>
             <div class="modal-body mx-3">
                 {{-- フォーム --}}
-                <form id="profile-image" method="POST" class="sm-form" action="{{ route('users.edit',['name'=>$user->name]) }}" enctype="multipart/form-data">
+                <form id="profile-image" method="POST" class="sm-form"
+                    action="{{ route('users.edit', ['name' => $user->name]) }}" enctype="multipart/form-data">
                     @csrf
                     <input class="h6" type="file" name="profile_image">
                     <br><small class="text-danger">※jpg.png形式のみ</small>
@@ -61,7 +73,7 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <button form="profile-image" type="submit" class="btn btn-default">変更</button>
-                
+
                 {{-- フォーム --}}
             </div>
         </div>
