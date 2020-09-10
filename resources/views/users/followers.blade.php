@@ -17,7 +17,7 @@
         <div class="tab-content">
             <div class="row">
                 @foreach ($followerUsers as $user)
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                       @include('users.user_small_card')
                     </div>
                 @endforeach
