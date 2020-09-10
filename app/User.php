@@ -46,6 +46,17 @@ class User extends Authenticatable
     public function follows(): BelongsToMany {
         return $this->belongsToMany('App\User','follows','follow_id','follower_id')->withTimestamps();
     }
+    // フォロワーの数
+    public function getCountFollowersAttribute(): int 
+    {
+        return $this->followers->count();
+    }
+    // フォローしている数
+    public function getCountFollowsAttribute(): int
+    {
+        return $this->follows->count();
+    }
+
 
     // フォローしているかチェック
     public function isFollowdBy(?User $user): bool {

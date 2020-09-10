@@ -41,7 +41,6 @@ class UserController extends Controller
         }
         $request->user()->follows()->detach($user);
         $request->user()->follows()->attach($user);
-        return ['name' => $name];
     }
     // フォロー解除
     public function unfollow(Request $request, string $name)
@@ -51,6 +50,5 @@ class UserController extends Controller
             return abort('404', '自分自身をフォローする事はできません');
         }
         $request->user()->follows()->detach($user);
-        return['name' => $name];
     }
 }

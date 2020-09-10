@@ -45,8 +45,8 @@
 
             <div class="card-body p-0 mt-3">
                 <div class="card-text">
-                    <a href="" class="text-muted mr-1">10 フォロー</a>
-                    <a href="" class="text-muted ml-1">10 フォロワー</a>
+                    <a href="" class="text-muted mr-1">{{ $user->count_follows }} フォロー</a>
+                    <a href="" class="text-muted ml-1">{{ $user->count_followers}}フォロワー</a>
                 </div>
             </div>
         </div>
