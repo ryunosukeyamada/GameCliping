@@ -29,4 +29,6 @@ class UserController extends Controller
             return redirect()->route('users.show',['name' => $user->name]);
         }
     }
+
+    
 }

@@ -25,11 +25,13 @@
             <!-- ユーザーネーム -->
             <h4 class="h4 mb-4 green-text"><i class="mr-2 far fa-user-circle"></i>{{ $user->name }}</h4>
 
-            <button class="btn btn-primary">フォロー</button>
-            <div class="card-body">
+            <div class="mb-5">
+                <follow></follow>
+            </div>
+            <div class="card-body p-0 mt-3">
                 <div class="card-text">
-                    <a href="" class="text-muted m-2">10 フォロー</a>
-                    <a href="" class="text-muted m-2">10 フォロワー</a>
+                    <a href="" class="text-muted mr-1">10 フォロー</a>
+                    <a href="" class="text-muted ml-1">10 フォロワー</a>
                 </div>
             </div>
         </div>
