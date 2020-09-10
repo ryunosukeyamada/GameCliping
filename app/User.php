@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -37,6 +38,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // そのユーザーが投稿したクリップを取得
+    public function clips(): HasMany {
+        return $this->hasMany('App\Clip');
+    }
+    // そのユーザーがいいねしたクリップの取得
+    public function likes(): BelongsToMany {
+        return $this->belongsToMany('App\Clip','likes')->withTimestamps();
+    }
 
     // そのユーザーがどのユーザーにフォローされているかの取得
     public function followers() : BelongsToMany {

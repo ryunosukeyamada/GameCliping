@@ -10,10 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    // ユーザー情報
     public function show(string $name)
     {
         $user = User::where('name', $name)->first();
-        return view('users.show', ['user' => $user]);
+        $clips = $user->clips()->orderBy('created_at', 'desc')->paginate(8);
+        return view('users.show', ['user' => $user,'clips' => $clips]);
+    }
+    // ユーザーいいね
+    public function likes(String $name) {
+        $user = User::where('name', $name)->first();
+        $clips= $user->likes()->orderBy('created_at','desc')->paginate(8);
+
+        return view('users.likes', ['user' => $user,'clips'=>$clips]);
     }
 
     // プロフィール画像編集

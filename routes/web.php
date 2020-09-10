@@ -39,11 +39,12 @@ Route::prefix('clips')->middleware('auth')->group(function () {
 // ユーザー情報
 Route::prefix('users')->name('users')->group(function () {
   Route::get('/{name}', 'UserController@show')->name('.show');
+  Route::get('/{name}/likes', 'USerController@likes')->name('.likes');
 
-  Route::post('{name}/edit', 'UserController@edit')->name('.edit')->middleware('auth');
-
-  // フォロー
+  // フォロー イメージ変更
   Route::middleware('auth')->group(function() {
+    Route::post('{name}/edit', 'UserController@edit')->name('.edit');
+
     Route::put('/{name}/follow', 'UserController@follow')->name('.follow');
     Route::delete('/{name}/follow', 'UserController@unfollow')->name('.unfollow');
   });
