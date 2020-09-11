@@ -2,7 +2,7 @@
   <div>
     <button
       type="button"
-      class="btn btn-sm shadow-none rounded-lg pt-2 pb-2"
+      class="btn btn-sm shadow-none rounded-lg pt-2 pb-2 h-auto"
       :class="color"
       @click="clickFollow"
     >
@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     color() {
-      return this.isFollowdBy ? "btn-success" : "btn-outline-primary";
+      return this.isFollowdBy ? "btn-success animated fadeIn" : "btn-outline-primary";
     },
     icon() {
       return this.isFollowdBy ? "fa-user-times" : "fa-user-plus";
