@@ -37,13 +37,14 @@ class ClipController extends Controller
     // クリップいいね順
     public function indexLikes()
     {
-        $clips = Clip::with(['user', 'likes'])->withCount('likes')->orderBy('likes_count', 'desc')->paginate(8);
+        $clips = Clip::with(['user', 'likes','tags'])->withCount('likes')->orderBy('likes_count', 'desc')->paginate(8);
         // dd($clips);
         return view('clips.index_likes', ['clips' => $clips]);
     }
     // 自分のクリップ
     public function myClip(Request $request) {
         $user = $request->user();
+        $user->load(['clips.likes','clips.tags','clips.user']);
         $clips = $user->clips()->orderBy('created_at','desc')->paginate(8);
         return view('clips.index_myclips',['user' => $user,'clips'=>$clips]);
     }

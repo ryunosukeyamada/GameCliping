@@ -11,7 +11,7 @@
             </a>
             <!-- フォローコンポーネント -->
             @if (Auth::id() !== $user->id)
-                <div class="ml-auto">
+                <div>
                     <follow :initial-is-followd-by='@json($user->isFollowdBy(Auth::user()))'
                         :login-check='@json(Auth::check())'
                          url="{{ route('users.follow', ['name' => $user->name]) }}">

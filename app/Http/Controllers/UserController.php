@@ -14,27 +14,27 @@ class UserController extends Controller
     public function show(string $name)
     {
         $user = User::where('name', $name)->first();
-        $clips = $user->clips()->orderBy('created_at', 'desc')->paginate(8);
+        $clips = $user->clips()->with(['likes','tags','user'])->orderBy('created_at', 'desc')->paginate(8);
         return view('users.show', ['user' => $user,'clips' => $clips]);
     }
     // ユーザーいいね一覧
     public function likes(String $name) {
         $user = User::where('name', $name)->first();
-        $clips= $user->likes()->orderBy('created_at','desc')->paginate(8);
+        $clips= $user->likes()->with(['tags','user','like'])->orderBy('created_at','desc')->paginate(8);
 
         return view('users.likes', ['user' => $user,'clips'=>$clips]);
     }
     // ユーザーフォロー一覧
     public function follows(string $name) {
         $user = User::where('name',$name)->first();
-        $followUsers= $user->follows()->orderBy('created_at', 'desc')->paginate(12);
+        $followUsers= $user->follows()->with('followers')->orderBy('created_at', 'desc')->paginate(12);
         return view('users.follows',['user'=>$user,'followUsers'=>$followUsers]);
     }
     // ユーザーフォロワー一覧
     public function followers(string $name)
     {
         $user = User::where('name', $name)->first();
-        $followerUsers = $user->followers()->orderBy('created_at', 'desc')->paginate(12);
+        $followerUsers = $user->followers()->with('followers.followers')->orderBy('created_at', 'desc')->paginate(12);
         return view('users.followers', ['user' => $user, 'followerUsers' => $followerUsers]);
     }
 
