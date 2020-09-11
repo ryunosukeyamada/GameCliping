@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 */
 // アカウント機能
 Auth::routes();
+// Google
+Route::prefix('login')->name('login')->group(function() {
+  Route::get('/google','Auth\LoginController@redirectToGoogle')->name('.google');
+});
 
 // Top画面
 Route::get('/', 'TopController@show')->name('top');

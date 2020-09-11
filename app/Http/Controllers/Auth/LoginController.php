@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -46,4 +47,9 @@ class LoginController extends Controller
     }
     // ログイン複数回失敗によるディレイ
     protected $decayMinutes = 3;
+
+    // GoogleLogin
+    public function redirectToGoogle() {
+        return Socialite::driver('google')->redirect();
+    }
 }
