@@ -106,7 +106,7 @@
                     @csrf
                     @method('PUT')
                     <div class="md-form amber-textarea active-amber-textarea">
-                        <i class="fas fa-pencil-alt prefix animated bounce slower"></i>
+                        <i class="fas fa-pencil-alt prefix animated jackInTheBox"></i>
                         <textarea name="caption" id="form22" class="md-textarea form-control" rows="4">{{ $user->caption }}</textarea>
                         <label for="form22">コメント</label>
                         <small style="color: rgba(128, 128, 128, 0.5)">MAX100</small>
