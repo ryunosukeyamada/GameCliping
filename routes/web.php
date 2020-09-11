@@ -46,6 +46,8 @@ Route::prefix('users')->name('users')->group(function () {
   Route::get('/{name}/follow','UserController@follows')->name('.follows');
   Route::get('/{name}/followers', 'UserController@followers')->name('.followers');
 
+  Route::post('/serch', 'UserController@serch')->name('.serch');
+
   // フォロー イメージ変更
   Route::middleware('auth')->group(function() {
     // イメージ変更

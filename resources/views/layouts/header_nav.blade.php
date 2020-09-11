@@ -20,6 +20,14 @@
                 </li>
             @endguest
 
+            <!-- Button trigger modal -->
+            <li class="nav-item">
+                <a class="nav-link" id="modalActivate" data-toggle="modal" data-target="#exampleModalPreview">
+                    検索<i class="fas fa-search"></i>
+                </a>
+            </li>
+
+
 
             @auth
                 <li class="nav-item">
@@ -37,12 +45,12 @@
                     <div class="dropdown-menu dropdown-menu-right dropdown-default"
                         aria-labelledby="navbarDropdownMenuLink-333">
                         <button class="dropdown-item"
-                            onclick="location.href='{{ route('users.show', ['name' => Auth::user()->name])}}' ">
+                            onclick="location.href='{{ route('users.show', ['name' => Auth::user()->name]) }}' ">
                             マイページ
                         </button>
                         {{-- ログアウトはPOSTでリクエスト --}}
-                        <button class="dropdown-item" type="submit" form="logout-form">ログアウト
-                            <i class="fas fa-sign-out-alt"></i>
+                        <button class="dropdown-item" type="submit" form="logout-form">
+                            ログアウト<i class="fas fa-sign-out-alt"></i>
                         </button>
                     </div>
                 </li>
@@ -55,4 +63,32 @@
 <form method="POST" action="{{ route('logout') }}" id="logout-form">
     @csrf
 </form>
-<!--/.Navbar -->
+
+{{-- 検索用 --}}
+<div class="modal fade top" id="exampleModalPreview" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-frame modal-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalPreviewLabel">ユーザー検索</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                @include('layouts.error_list')
+                <div class="md-form form-lg">
+                    <form method="POST" action="{{ route('users.serch') }}">
+                        @csrf
+                        <input type="text" name="keyword" id="inputLGEx" class="form-control form-control-lg" value="{{ old('keyword') }}">
+                        <label for="inputLGEx">User Name</label>
+                        <button type="submit" class="btn btn-outline-success btn-block mt-5">検索</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal -->

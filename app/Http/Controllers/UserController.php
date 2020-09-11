@@ -64,6 +64,16 @@ class UserController extends Controller
         return redirect()->route('users.show', ['name' => $user->name]);
     }
 
+    // ユーザー検索
+    public function serch(Request $request) {
+        $this->validate($request,['keyword' => 'required|string|alpha_num']);
+        $query = User::query();
+        $keyword = $request->keyword;
+        $users = $query->with(['followers'])->where('name','like','%'.$keyword.'%')->get();
+
+        return view('users.serch',['users'=> $users, 'keyword'=> $keyword]);
+    }
+
     // フォロー
     public function follow(Request $request, string $name)
     {
