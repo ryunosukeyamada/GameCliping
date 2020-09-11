@@ -33,7 +33,8 @@
                     </div>
 
                     <div class="form-group">
-                        <clip-tags-input>
+                        <clip-tags-input 
+                        :initial-tags='[]'>
 
                         </clip-tags-input>
                     </div>
