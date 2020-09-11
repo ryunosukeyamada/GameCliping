@@ -14,7 +14,7 @@ class AddCaptionToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('caption','100')->default('Hello World');
+            $table->string('caption','100')->nullable()->default('Hello World');
         });
     }
 
@@ -26,7 +26,7 @@ class AddCaptionToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('caption');
         });
     }
 }

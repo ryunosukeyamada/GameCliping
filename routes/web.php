@@ -48,7 +48,11 @@ Route::prefix('users')->name('users')->group(function () {
 
   // フォロー イメージ変更
   Route::middleware('auth')->group(function() {
+    // イメージ変更
     Route::post('{name}/edit', 'UserController@edit')->name('.edit');
+    // コメント変更
+    Route::put('{name}/edit', 'UserController@editCaption');
+
 
     Route::put('/{name}/follow', 'UserController@follow')->name('.follow');
     Route::delete('/{name}/follow', 'UserController@unfollow')->name('.unfollow');

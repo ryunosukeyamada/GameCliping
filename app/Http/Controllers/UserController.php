@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CaptionRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
 
@@ -20,7 +21,7 @@ class UserController extends Controller
     // ユーザーいいね一覧
     public function likes(String $name) {
         $user = User::where('name', $name)->first();
-        $clips= $user->likes()->with(['tags','user','like'])->orderBy('created_at','desc')->paginate(8);
+        $clips= $user->likes()->with(['tags','user','likes'])->orderBy('created_at','desc')->paginate(8);
 
         return view('users.likes', ['user' => $user,'clips'=>$clips]);
     }
@@ -52,6 +53,15 @@ class UserController extends Controller
             $user->save();
             return redirect()->route('users.show', ['name' => $user->name]);
         }
+    }
+
+    // コメント編集
+    public function editCaption(CaptionRequest $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+        $user->caption=$request->caption;
+        $user->save();
+        return redirect()->route('users.show', ['name' => $user->name]);
     }
 
     // フォロー
