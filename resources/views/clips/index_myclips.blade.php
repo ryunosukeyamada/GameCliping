@@ -7,7 +7,7 @@
 
 @section('content')
     @include('layouts.header_nav')
-    @include('clips.tabs',['clip' =>false,'like' => false,'myClip' =>true])
+    @include('clips.tabs',['clip' =>false,'like' => false,'followClip'=>false,'myClip' =>true])
     <div class="container-fluid" style="min-height: 600px">
         <div class="row">
             @foreach ($user->clips as $clip)
