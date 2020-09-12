@@ -49,7 +49,11 @@ class ClipController extends Controller
     }
     // フォローしているユーザーのクリップ
     public function followClips(Request $request) {
-        $clips = Clip::query()->whereIn('user_id',$request->user()->follows()->pluck('follower_id'))->orderBy('created_at','desc')->paginate(8);
+        $clips = Clip::query()
+        ->with(['user', 'likes', 'tags'])
+        ->whereIn('user_id',$request->user()->follows()
+        ->pluck('follower_id'))->orderBy('created_at','desc')->paginate(8);
+
         return view('clips.index_follow_clips',['clips'=>$clips]);
     }
 

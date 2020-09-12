@@ -27,14 +27,18 @@ Route::prefix('register')->name('register')->group(function () {
 // Top画面
 Route::get('/', 'TopController@show')->name('top');
 
-// 投稿一覧
-Route::get('/home', 'ClipController@index')->name('clips.index');
-// 投稿一覧自分の投稿
-Route::get('/home/myclip', 'ClipController@myClip')->name('clips.index.myclip');
-// 投稿一覧いいね順
-Route::get('/home/likes', 'ClipController@indexLikes')->name('clips.index.likes');
-// 投稿一覧フォローしているユーザーの投稿
-Route::get('/home/followclip', 'ClipController@followClips')->name('clips.index.followClips');
+
+Route::prefix('home')->name('clips')->group(function(){
+  // 投稿一覧
+  Route::get('', 'ClipController@index')->name('.index');
+  // 投稿一覧自分の投稿
+  Route::get('/myclip', 'ClipController@myClip')->name('.index.myclip');
+  // 投稿一覧いいね順
+  Route::get('/likes', 'ClipController@indexLikes')->name('.index.likes');
+  // 投稿一覧フォローしているユーザーの投稿
+  Route::get('/followclips', 'ClipController@followClips')->name('.index.followClips');
+});
+
 // 投稿一覧タグ別
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 
