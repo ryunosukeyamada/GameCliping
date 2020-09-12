@@ -18,5 +18,6 @@
         </div>
         @include('layouts.paginate')
     </div>
+    @include('layouts.footer_nav')
 
 @endsection

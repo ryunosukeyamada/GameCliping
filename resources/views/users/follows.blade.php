@@ -27,4 +27,5 @@
             {{ $followUsers->links('pagination.default') }}
         </div>
     </div>
+    @include('layouts.footer_nav')
 @endsection

@@ -12,5 +12,6 @@
     <div class="container">
         @include('clips.clip')
     </div>
+    @include('layouts.footer_nav')
 
 @endsection

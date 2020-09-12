@@ -26,6 +26,7 @@
         </div>
     </div>
     @include('layouts.paginate')
+    @include('layouts.footer_nav')
 
 
 

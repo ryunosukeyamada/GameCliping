@@ -57,4 +57,7 @@
 
         </div>
     </div>
+    <div class="fixed-bottom">
+        @include('layouts.footer_nav')
+    </div>
 @endsection
