@@ -14,14 +14,22 @@
             <div class="col-md-3 mb-md-0 mb-3">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!"><small> プライバシーポリシー</small></a>
+                        <a href="https://www.kiyaku.app/plivacypolicy/ct8AolnYrJqgIob6V5Tl"><small>
+                                プライバシーポリシー</small></a>
                     </li>
                 </ul>
             </div>
             <div class="col-md-3 mb-md-0 mb-3">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!"><small>利用規約</small></a>
+                        <a href="https://www.kiyaku.app/termsOfService/9HWJKz54QB7xbYXbVRpK"><small>利用規約</small></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2 mb-md-0 mb-2">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://www.kiyaku.app/termsOfService/9HWJKz54QB7xbYXbVRpK"><small>管理人</small></a>
                     </li>
                 </ul>
             </div>

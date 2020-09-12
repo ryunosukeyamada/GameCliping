@@ -26,8 +26,6 @@ Route::prefix('register')->name('register')->group(function () {
 
 // Top画面
 Route::get('/', 'TopController@show')->name('top');
-Route::get('privacy', 'TopController@privacy')->name('privacy');
-Route::get('riyou', 'TopController@riyoukiyaku')->name('riyoukiyaku');
 
 // 投稿一覧
 Route::get('/home', 'ClipController@index')->name('clips.index');
