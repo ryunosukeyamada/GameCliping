@@ -9,9 +9,9 @@
 
     @include('layouts.header_nav')
 
-    <div class="container">
+    <div class="container" style="min-height: 600px">
         @include('clips.clip')
     </div>
-    @include('layouts.footer_nav')
+        @include('layouts.footer_nav')
 
 @endsection

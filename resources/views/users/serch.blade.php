@@ -8,7 +8,7 @@
 
     @include('layouts.header_nav')
 
-    <div class="container">
+    <div class="container" style="min-height: 600px">
         <div class="card mt-2">
             <div class="card-body">
                 <button onclick="history.back()" class="btn btn-outline-green float-right">戻る</button>
@@ -26,6 +26,7 @@
             </div>
         </div>
     </div>
+    @include('layouts.footer_nav')
 
 
 @endsection

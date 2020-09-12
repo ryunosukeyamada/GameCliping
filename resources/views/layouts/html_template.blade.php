@@ -22,7 +22,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 </head>
 
-<body style="position: relative">
+<body>
     <div id="app">
         @yield('content')
     </div>

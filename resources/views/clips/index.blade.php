@@ -9,7 +9,7 @@
     @include('layouts.header_nav')
     @include('clips.tabs',['clip' =>true,'like' => false,'myClip' =>false])
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height: 600px">
         <div class="row">
             @foreach ($clips as $clip)
                 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">

@@ -13,7 +13,7 @@
         @include('users.user_card')
     </div>
 
-    <div class="container">
+    <div class="container" style="min-height: 600px">
         @include('users.tabs',['clip'=>true,'like'=>false,'follows'=>false,'followers'=>false])
         <div class="tab-content" id="myTabContent">
             <div class="row">
