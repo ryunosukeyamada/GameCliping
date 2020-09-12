@@ -29,7 +29,7 @@
                     <!-- ID -->
                     <div class="md-form mt-5">
                         <input type="text" id="name" class="form-control" name="name" required value="{{ old('name') }}">
-                        <small class="deep-orange lighten-1">※英数字3〜16文字（登録後の変更はできない仕様となっています。）</small>
+                        <small class="deep-orange lighten-3">※英数字ハイフン、アンダースコア 3〜16文字（登録後の変更はできません。）</small>
                         <label for="name">ユーザー名</label>
                     </div>
 

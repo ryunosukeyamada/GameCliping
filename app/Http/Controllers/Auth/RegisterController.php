@@ -52,7 +52,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'alpha_dash', 'regex:/^[A-Za-z\d_-]+$/', 'min:3', 'max:16', 'unique:users'],
+            'name' => [
+                'required', 'string', 'alpha_dash', 'bail',
+                 'regex:/^[A-Za-z\d_-]+$/','min:3', 'max:16', 'unique:users'
+            ],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string' ,'regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/', 'min:8', 'confirmed'],
         ]);
@@ -80,7 +83,8 @@ class RegisterController extends Controller
     }
     public function registerGoogleUser(Request $request) {
         $request->validate([
-            'name' => ['required','string', 'alpha_dash', 'regex:/^[A-Za-z\d_-]+$/', 'min:3','max:16','unique:users'],
+            'name' => ['required','string', 'alpha_dash', 'bail',
+                      'regex:/^[A-Za-z\d_-]+$/', 'min:3','max:16','unique:users'],
             'token' => ['required','string']
         ]);
 
