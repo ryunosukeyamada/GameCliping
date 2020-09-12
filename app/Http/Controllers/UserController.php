@@ -66,7 +66,7 @@ class UserController extends Controller
 
     // ユーザー検索
     public function serch(Request $request) {
-        $this->validate($request,['keyword' => 'required|string|alpha_num']);
+        $this->validate($request,['keyword' => 'required|string|alpha_dash']);
         $query = User::query();
         $keyword = $request->keyword;
         $users = $query->with(['followers'])->where('name','like','%'.$keyword.'%')->get();
