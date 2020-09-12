@@ -11,7 +11,7 @@
     </li>
     @auth
         <li class="nav-item">
-            <a class="nav-link text-muted {{ $followClip ? 'active' : '' }}" href="{{ route('clips.index.myclip') }}">
+            <a class="nav-link text-muted {{ $followClip ? 'active' : '' }}" href="{{ route('clips.index.followClips') }}">
                 フォロー
             </a>
         </li>

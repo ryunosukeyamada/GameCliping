@@ -10,7 +10,7 @@ use App\Tag;
 use App\User;
 use Google_Client;
 use Google_Service_YouTube;
-
+use Illuminate\Support\Facades\Auth;
 
 class ClipController extends Controller
 {
@@ -38,7 +38,6 @@ class ClipController extends Controller
     public function indexLikes()
     {
         $clips = Clip::with(['user', 'likes','tags'])->withCount('likes')->orderBy('likes_count', 'desc')->paginate(8);
-        // dd($clips);
         return view('clips.index_likes', ['clips' => $clips]);
     }
     // 自分のクリップ
@@ -47,6 +46,11 @@ class ClipController extends Controller
         $user->load(['clips.likes','clips.tags','clips.user']);
         $clips = $user->clips()->orderBy('created_at','desc')->paginate(8);
         return view('clips.index_myclips',['user' => $user,'clips'=>$clips]);
+    }
+    // フォローしているユーザーのクリップ
+    public function followClips(Request $request) {
+        $clips = Clip::query()->whereIn('user_id',$request->user()->follows()->pluck('follower_id'))->orderBy('created_at','desc')->paginate(8);
+        return view('clips.index_follow_clips',['clips'=>$clips]);
     }
 
 

@@ -33,6 +33,8 @@ Route::get('/home', 'ClipController@index')->name('clips.index');
 Route::get('/home/myclip', 'ClipController@myClip')->name('clips.index.myclip');
 // 投稿一覧いいね順
 Route::get('/home/likes', 'ClipController@indexLikes')->name('clips.index.likes');
+// 投稿一覧フォローしているユーザーの投稿
+Route::get('/home/followclip', 'ClipController@followClips')->name('clips.index.followClips');
 // 投稿一覧タグ別
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 
