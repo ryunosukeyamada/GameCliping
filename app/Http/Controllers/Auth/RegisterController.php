@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 class RegisterController extends Controller
 {
@@ -50,7 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'alpha_num', 'min:3', 'max:16', 'unique:users'],
+            'name' => ['required', 'string', 'alpha_num', 'regex:/^[A-Za-z\d]+$/', 'min:3', 'max:16', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string' ,'regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/', 'min:8', 'confirmed'],
         ]);
@@ -69,5 +71,27 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    
+    public function showGoogleUserRegistrationForm(Request $request) {
+        $token = $request->token;
+        $googleUser= Socialite::driver('google')->userFromToken($token);
+        return view('auth.google_register', ['email' => $googleUser->email,'token'=>$token]);
+    }
+    public function registerGoogleUser(Request $request) {
+        $request->validate([
+            'name' => ['required','string','alpha_num', 'regex:/^[A-Za-z\d]+$/', 'min:3','max:16','unique:users'],
+            'token' => ['required','string']
+        ]);
+
+        $token = $request->token;
+        $googleUser= Socialite::driver('google')->userFromToken($token);
+        $user = User::create([
+            'name' =>$request->name,
+            'email' => $googleUser->email,
+            'password' => null,
+        ]);
+        $this->guard()->login($user, true);
+        return $this->registered($request, $user) ?: redirect($this->redirectPath());
     }
 }

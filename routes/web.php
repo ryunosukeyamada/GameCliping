@@ -17,6 +17,11 @@ Auth::routes();
 // Google
 Route::prefix('login')->name('login')->group(function() {
   Route::get('/google','Auth\LoginController@redirectToGoogle')->name('.google');
+  Route::get('/google/callback', 'Auth\LoginController@handleGoogleCallback')->name('.google.callback');
+});
+Route::prefix('register')->name('register')->group(function () {
+  Route::get('/google', 'Auth\RegisterController@showGoogleUserRegistrationForm')->name('.google');
+  Route::post('/google', 'Auth\RegisterController@registerGoogleUser')->name('.google');
 });
 
 // Top画面

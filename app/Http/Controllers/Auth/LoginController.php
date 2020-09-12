@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
+use App\User;
 class LoginController extends Controller
 {
     /*
@@ -51,5 +52,14 @@ class LoginController extends Controller
     // GoogleLogin
     public function redirectToGoogle() {
         return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback(Request $request) {
+        $googleUser = Socialite::driver('google')->stateless()->user();
+        $user = User::where('email',$googleUser->email)->first();
+        if($user){
+            $this->guard()->login($user,true);
+            return $this->sendLoginResponse($request);
+        }
+        return redirect()->route('register.google',['token' => $googleUser->token]);
     }
 }
