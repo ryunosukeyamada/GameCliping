@@ -12,9 +12,15 @@
     <div class="container-fluid" style="min-height: 600px">
         <div class="row">
             @foreach ($clips as $clip)
-                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                @if ($loop->first)
+                    <div class="col-sm-12 no1">
+                        @include('clips.clip')
+                    </div>
+                @else
+                <div class="col-sm-12 col-md-6">
                     @include('clips.clip')
                 </div>
+                @endif
             @endforeach
         </div>
         @include('layouts.paginate')

@@ -37,7 +37,7 @@ class ClipController extends Controller
     // クリップいいね順
     public function indexLikes()
     {
-        $clips = Clip::with(['user', 'likes','tags'])->withCount('likes')->orderBy('likes_count', 'desc')->paginate(8);
+        $clips = Clip::with(['user', 'likes','tags'])->withCount('likes')->orderBy('likes_count', 'desc')->paginate(5);
         return view('clips.index_likes', ['clips' => $clips]);
     }
     // 自分のクリップ
