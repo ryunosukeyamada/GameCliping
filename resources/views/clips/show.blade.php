@@ -2,14 +2,13 @@
 
 @section('head')
     <title>クリップの詳細</title>
-    <link rel="stylesheet" href="{{ secure_asset('css/show.css') }}">
 @endsection
 
 @section('content')
 
     @include('layouts.header_nav')
 
-    <div class="container" style="min-height: 600px">
+    <div class="container show" style="min-height: 600px">
         @include('clips.clip')
     </div>
         @include('layouts.footer_nav')
