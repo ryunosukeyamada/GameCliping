@@ -2,7 +2,6 @@
 
 @section('head')
     <title>GameClipingへようこそ</title>
-    <link rel="stylesheet" href="{{ secure_asset('css/top.css') }}">
 @endsection
 
 @section('content')

@@ -7,9 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!-- ファビコン -->
     <link rel="icon" href="{{ secure_asset('img/favicon.jpeg') }}">
-    <!-- リセットCSS -->
-    <link rel="stylesheet" href="{{ secure_asset('css/reset.css') }}">
-
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
     @yield('head')
     
     <!-- Font Awesome -->
