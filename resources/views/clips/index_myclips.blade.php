@@ -2,6 +2,7 @@
 
 @section('head')
     <title>{{ $user->name }}の投稿 {{ $clips->count() }}件</title>
+    <link rel="stylesheet" href="{{ secure_asset('css/index.css ') }}">
 @endsection
 
 @section('content')

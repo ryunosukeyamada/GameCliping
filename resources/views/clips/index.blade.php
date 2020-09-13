@@ -2,6 +2,7 @@
 
 @section('head')
     <title>投稿一覧</title>
+    <link rel="stylesheet" href="{{ secure_asset('css/index.css ') }}">
 @endsection
 
 @section('content')
