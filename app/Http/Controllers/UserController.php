@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
 
 use App\User;
-use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -45,7 +45,7 @@ class UserController extends Controller
         $user = User::where('name', $name)->first();
 
         $originalImg = $request->profile_image;
-        // dd($originalImg);
+
         if ($originalImg->isValid()) {
             $filePath = $originalImg->store('public/profiles');
             // profile_imageカラムにpublic/profilesが入らないように削除↓

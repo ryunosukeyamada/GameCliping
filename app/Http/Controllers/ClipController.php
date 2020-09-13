@@ -26,13 +26,6 @@ class ClipController extends Controller
     {
         $clips = Clip::with(['likes', 'user', 'tags'])->orderBy('created_at', 'desc')->paginate(12);
         return view('clips.index', ['clips' => $clips]);
-
-
-        // サムネイル取得
-        // $listResponse = $youtube->videos->listVideos('snippet', ['id' => $video_id]);
-        // $video_items = $listResponse[0];
-        // $video_snippet = $video_items['snippet'];
-        // $thumnail = $video_snippet['thumbnails']['maxres'] -> url;
     }
     // クリップいいね順
     public function indexLikes()
@@ -82,8 +75,6 @@ class ClipController extends Controller
         }
         // レコードにVideo_IDを保存挿入
         $clip->video_id = $video_id;
-
-        // dd($video_id);
 
         // YOUTUBE接続
         $client = new Google_Client();
