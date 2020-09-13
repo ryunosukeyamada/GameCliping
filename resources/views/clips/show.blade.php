@@ -2,7 +2,7 @@
 
 @section('head')
     <title>クリップの詳細</title>
-    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/show.css') }}">
 @endsection
 
 @section('content')

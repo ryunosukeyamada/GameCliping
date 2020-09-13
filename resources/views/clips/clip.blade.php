@@ -26,11 +26,11 @@
         <!-- ユーザーの画像 -->
         @if ($clip->user->profile_image === 'default.png')
             <a href=" {{ route('users.show', ['name' => $clip->user->name]) }}"><img
-                    src="{{ asset('storage/profiles/default.png') }}" class="rounded-circle mr-3" height="50px"
+                    src="{{ secure_asset('storage/profiles/default.png') }}" class="rounded-circle mr-3" height="50px"
                     width="50px" alt="avatar"></a>
         @else
             <a href=" {{ route('users.show', ['name' => $clip->user->name]) }}"><img
-                    src="{{ asset('storage/profiles/' . $clip->user->profile_image) }}" class="rounded-circle mr-3"
+                    src="{{ secure_asset('storage/profiles/' . $clip->user->profile_image) }}" class="rounded-circle mr-3"
                     height="50px" width="50px" alt="avatar"></a>
         @endif
 
@@ -65,7 +65,7 @@
     <div class="view overlay">
         @if ($clip->video_html == '')
             <div class="text-center">
-                <img class="notMovie" width="250px" src="{{ asset('img/notMovie.png') }}" alt="ごめんなさい">
+                <img class="notMovie" width="250px" src="{{ secure_asset('img/notMovie.png') }}" alt="ごめんなさい">
                 <p>動画を取得できませんでした</p>
             </div>
         @else

@@ -1,7 +1,7 @@
 <div class="rounded orange lighten-4 shadow mt-3 pt-2 pb-2 w-100">
     <div class="d-flex">
         <a class="ml-3" href="{{ route('users.show', ['name' => $user->name]) }}">
-            <img src="{{ asset('storage/profiles/' . $user->profile_image) }}" class="rounded-circle m-1" height="60px"
+            <img src="{{ secure_asset('storage/profiles/' . $user->profile_image) }}" class="rounded-circle m-1" height="60px"
                 width="60px" alt="Userトップ画像">
         </a>
 

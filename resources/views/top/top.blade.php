@@ -2,14 +2,14 @@
 
 @section('head')
     <title>GameClipingへようこそ</title>
-    <link rel="stylesheet" href="{{ asset('css/top.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/top.css') }}">
 @endsection
 
 @section('content')
 <div class="content">
   <div class="head">
     <div class="m-3">
-       <a href="#"><img class="logo" src="{{ asset('img/GameClipingLogo.png') }}" alt="GameCliping_Logo"></a>
+       <a href="#"><img class="logo" src="{{ secure_asset('img/GameClipingLogo.png') }}" alt="GameCliping_Logo"></a>
     </div>
     <button type="button" 
       class="btn btn-info peach-gradient btn-rounded mr-5 m-3" 

@@ -7,7 +7,7 @@
 
             <!-- ユーザートップ画像 -->
             <div class="text-center">
-                <img src="{{ asset('storage/profiles/' . $user->profile_image) }}" class="rounded-circle" height="220px"
+                <img src="{{ secure_asset('storage/profiles/' . $user->profile_image) }}" class="rounded-circle" height="220px"
                     width="220px" alt="Userトップ画像">
             </div>
             @auth

@@ -2,7 +2,7 @@
 
 @section('head')
     <title>いいね順</title>
-    <link rel="stylesheet" href="{{ asset('css/index.css ') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/index.css ') }}">
 @endsection
 
 @section('content')

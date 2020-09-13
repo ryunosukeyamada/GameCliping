@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-md-4 mt-md-0 mb-3">
-                <a href="{{ route('top') }}"><img width="100px" src="{{ asset('img/GameClipingLogo.png') }}"
+                <a href="{{ route('top') }}"><img width="100px" src="{{ secure_asset('img/GameClipingLogo.png') }}"
                         alt="logo"></a>
             </div>
 

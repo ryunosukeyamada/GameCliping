@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <h1 class="text-center mt-3">
-            <a href="/"><img width="150px" src="{{ asset('img/GameClipingLogo.png') }}" alt="logo"></a>
+            <a href="/"><img width="150px" src="{{ secure_asset('img/GameClipingLogo.png') }}" alt="logo"></a>
         </h1>
 
         <div class="card mt-5">

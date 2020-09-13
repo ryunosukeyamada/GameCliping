@@ -1,6 +1,6 @@
 <nav class="mb-1 navbar navbar-expand-sm navbar-dark peach-gradient">
     <a class="navbar-brand" href="{{ route('clips.index') }}"><img width="120px"
-            src="{{ asset('img/GameClipingLogo.png') }}" alt="logo"></a>
+            src="{{ secure_asset('img/GameClipingLogo.png') }}" alt="logo"></a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
