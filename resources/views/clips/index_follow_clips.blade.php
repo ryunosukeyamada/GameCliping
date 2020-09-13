@@ -7,6 +7,7 @@
 
 @section('content')
     @include('layouts.header_nav')
+    @include('clips.clip_count')
     @include('clips.tabs',['clip' =>false,'like' => false,'followClip'=>true,'myClip' =>false])
     <div class="container-fluid" style="min-height: 600px">
         <div class="row">

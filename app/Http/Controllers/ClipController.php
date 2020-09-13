@@ -24,7 +24,7 @@ class ClipController extends Controller
     // クリップ一覧
     public function index()
     {
-        $clips = Clip::with(['likes', 'user', 'tags'])->orderBy('created_at', 'desc')->paginate(8);
+        $clips = Clip::with(['likes', 'user', 'tags'])->orderBy('created_at', 'desc')->paginate(12);
         return view('clips.index', ['clips' => $clips]);
 
 

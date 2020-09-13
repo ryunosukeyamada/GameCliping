@@ -6,7 +6,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link text-muted {{ $like ? 'active' : '' }}" href="{{ route('clips.index.likes') }}">
-            いいね多い順
+            いいね順
         </a>
     </li>
     @auth
