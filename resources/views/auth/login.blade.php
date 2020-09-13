@@ -50,7 +50,8 @@
                 </form>
                 <!-- Form -->
                 <div class="mt-3">
-                    <a href="{{ route('register') }}">新規登録はこちら</a>
+                    <a class="mr-2" href="{{ route('register') }}">新規登録はこちら</a>
+                    <a href="{{ route('guest') }}">ゲストログイン</a>
                 </div>
 
             </div>

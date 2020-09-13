@@ -23,6 +23,8 @@ Route::prefix('register')->name('register')->group(function () {
   Route::get('/google', 'Auth\RegisterController@showGoogleUserRegistrationForm')->name('.google');
   Route::post('/google', 'Auth\RegisterController@registerGoogleUser')->name('.google');
 });
+// Guest Login
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('guest');
 
 // Top画面
 Route::get('/', 'TopController@show')->name('top');

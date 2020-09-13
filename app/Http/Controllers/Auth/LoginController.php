@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
 use App\User;
 class LoginController extends Controller
@@ -48,6 +49,16 @@ class LoginController extends Controller
     }
     // ログイン複数回失敗によるディレイ
     protected $decayMinutes = 3;
+
+    // GuestLogin
+    public function guestLogin() {
+        $email = 'guest1@guest.com';
+        $password = 'GuestPassword123';
+        if(Auth::attempt(['email' => $email,'password' => $password])){
+            return redirect()->route('clips.index');
+        }
+        return back();
+    }
 
     // GoogleLogin
     public function redirectToGoogle() {

@@ -59,9 +59,9 @@
                     </a>
                 </form>
                 <!-- Form -->
-                <div>
-                    <a href="{{ route('login') }}">ログインはこちら</a>
-
+                <div class="mt-3">
+                    <a class="mr-2" href="{{ route('login') }}">ログインはこちら</a>
+                    <a href="{{ route('guest') }}">ゲストログイン</a>
                 </div>
 
             </div>
