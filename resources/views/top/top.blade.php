@@ -18,19 +18,23 @@
   </div>
 
   <div class="body">
-    <p>あなたのシーンを<br>共有しよう。
-    </p>
+    <p>あなたの<br>お気に入りの動画を<br>共有しよう。</p>
+    <small class="youtube float-left text-light">
+      <span>※Youtube<i class="fab fa-youtube"></i></span>と連携します
+    </small>
     <div class="text-right">
-      <a class="btn btn-outline-yellow accent-2 btn-rounded pl-5 pr-5" href="{{ route('clips.index') }}">
+      <a class="btn btn-outline-yellow accent-2 pl-5 pr-5" href="{{ route('clips.index') }}">
         <i class="fab fa-affiliatetheme"></i>
         他の人の投稿を見る
       </a>
-      <a class="btn btn-outline-success btn-rounded pl-5 pr-5" href="{{ route('register') }}">
+      <a class="btn btn-outline-success pl-5 pr-5" href="{{ route('register') }}">
         アカウント登録
       </a>
     </div>
   </div>
-
 </div>  
+<div class="footer">
+  @include('layouts.footer_nav')
+</div>
     
 @endsection
