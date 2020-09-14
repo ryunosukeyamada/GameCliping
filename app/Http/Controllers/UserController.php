@@ -19,7 +19,7 @@ class UserController extends Controller
         return view('users.show', ['user' => $user,'clips' => $clips]);
     }
     // ユーザーいいね一覧
-    public function likes(String $name) {
+    public function likes(string $name) {
         $user = User::where('name', $name)->first();
         $clips= $user->likes()->with(['tags','user','likes'])->orderBy('created_at','desc')->paginate(8);
 
