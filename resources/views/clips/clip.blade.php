@@ -26,11 +26,11 @@
         <!-- ユーザーの画像 -->
         @if ($clip->user->profile_image === 'default.png')
             <a href=" {{ route('users.show', ['name' => $clip->user->name]) }}"><img
-                    src="{{ asset('img/default.png') }}" class="rounded-circle mr-3" height="50px"
+                    src="{{ secure_asset('img/default.png') }}" class="rounded-circle mr-3" height="50px"
                     width="50px" alt="avatar"></a>
         @else
             <a href=" {{ route('users.show', ['name' => $clip->user->name]) }}"><img
-                    src="{{ secure_asset('storage/profiles/' . $clip->user->profile_image) }}" class="rounded-circle mr-3"
+                    src="{{ secure_asset('storage/public/profiles/' . $clip->user->profile_image) }}" class="rounded-circle mr-3"
                     height="50px" width="50px" alt="avatar"></a>
         @endif
 
