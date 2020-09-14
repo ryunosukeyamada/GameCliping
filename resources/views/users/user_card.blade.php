@@ -12,7 +12,7 @@
                         alt="avatar"></a>
             @else
                 <a href=" {{ route('users.show', ['name' => $user->name]) }}"><img
-                        src="{{ secure_asset('storage/profiles/' . $user->profile_image) }}"
+                        src="{{ $user->profile_image }}"
                         class="rounded-circle mr-3" height="220px" width="220px" alt="avatar"></a>
             @endif
             @auth

@@ -13,7 +13,8 @@
         "google/apiclient": "^2.7",
         "laravel/framework": "^6.2",
         "laravel/socialite": "^5.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "league/flysystem-aws-s3-v3": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

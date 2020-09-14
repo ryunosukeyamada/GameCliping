@@ -7,7 +7,7 @@
                     alt="avatar"></a>
         @else
             <a class="ml-3" href=" {{ route('users.show', ['name' => $user->name]) }}"><img
-                    src="{{ secure_asset('storage/profiles/' . $user->profile_image) }}" class="rounded-circle mr-3"
+                    src="{{ $user->profile_image }}" class="rounded-circle mr-3"
                     height="60px" width="60px" alt="avatar"></a>
         @endif
 
