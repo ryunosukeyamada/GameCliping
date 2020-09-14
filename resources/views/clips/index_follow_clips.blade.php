@@ -2,7 +2,6 @@
 
 @section('head')
     <title>フォロー</title>
-    <link rel="stylesheet" href="{{ secure_asset('css/index.css ') }}">
 @endsection
 
 @section('content')

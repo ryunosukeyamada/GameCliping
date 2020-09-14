@@ -10,7 +10,6 @@ use App\Tag;
 use App\User;
 use Google_Client;
 use Google_Service_YouTube;
-use Illuminate\Support\Facades\Auth;
 
 class ClipController extends Controller
 {
