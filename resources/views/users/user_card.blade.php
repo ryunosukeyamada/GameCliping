@@ -6,10 +6,15 @@
         <div class="col-md-4 offset-md-1 mx-3 my-3">
 
             <!-- ユーザートップ画像 -->
-            <div class="text-center">
-                <img src="{{ secure_asset('storage/profiles/' . $user->profile_image) }}" class="rounded-circle" height="220px"
-                    width="220px" alt="Userトップ画像">
-            </div>
+            @if ($user->profile_image === 'default.png')
+                <a href=" {{ route('users.show', ['name' => $user->name]) }}"><img
+                        src="{{ secure_asset('img/default.png') }}" class="rounded-circle mr-3" height="220px" width="220px"
+                        alt="avatar"></a>
+            @else
+                <a href=" {{ route('users.show', ['name' => $user->name]) }}"><img
+                        src="{{ secure_asset('storage/profiles/' . $user->profile_image) }}"
+                        class="rounded-circle mr-3" height="220px" width="220px" alt="avatar"></a>
+            @endif
             @auth
                 @if (Auth::user()->name === $user->name)
                     <a class="btn btn-outline-default btn-md" data-toggle="modal"
@@ -107,7 +112,8 @@
                     @method('PUT')
                     <div class="md-form amber-textarea active-amber-textarea">
                         <i class="fas fa-pencil-alt prefix animated jackInTheBox"></i>
-                        <textarea name="caption" id="form22" class="md-textarea form-control" rows="4">{{ $user->caption }}</textarea>
+                        <textarea name="caption" id="form22" class="md-textarea form-control"
+                            rows="4">{{ $user->caption }}</textarea>
                         <label for="form22">コメント</label>
                         <small style="color: rgba(128, 128, 128, 0.5)">MAX100</small>
                     </div>
