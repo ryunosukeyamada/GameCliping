@@ -59,7 +59,7 @@ Route::prefix('clips')->middleware('auth')->group(function () {
 // ユーザー情報
 Route::prefix('users')->name('users')->group(function () {
   Route::get('/{name}', 'UserController@show')->name('.show');
-  Route::get('/{name}/likes', 'USerController@likes')->name('.likes');
+  Route::get('/{name}/likes', 'UeerController@likes')->name('.likes');
   Route::get('/{name}/follow','UserController@follows')->name('.follows');
   Route::get('/{name}/followers', 'UserController@followers')->name('.followers');
 
