@@ -7,7 +7,7 @@
 @section('content')
     @include('layouts.header_nav')
 
-    <div class="container" style="min-height: 600px">
+    <div class="container">
         <div class="card mt-2">
             <div class="card-body">
               <button onclick="history.back()" class="btn btn-outline-green float-right">戻る</button>
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid"  style="min-height: 600px">
         <div class="row">
             @foreach ($tag->clips as $clip)
                 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
