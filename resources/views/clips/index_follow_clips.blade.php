@@ -11,7 +11,7 @@
     <div class="container-fluid" style="min-height: 600px">
         <div class="row">
             @foreach ($clips as $clip)
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-12 col-md-6 col-lg-4 index">
                     @include('clips.clip')
                 </div>
             @endforeach

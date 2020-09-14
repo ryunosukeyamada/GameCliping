@@ -16,7 +16,7 @@
                         @include('clips.clip')
                     </div>
                 @else
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-6 index">
                     @include('clips.clip')
                 </div>
                 @endif
