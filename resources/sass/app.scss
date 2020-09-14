@@ -48,15 +48,15 @@
 
 記事一覧
 iframe {
-    width: 100%;
-    height: 300px;
-    z-index: 100;
-    padding: 3px;
+    width: 100% !important;
+    height: 300px !important;
+    z-index: 100 !important;
+    padding: 3px !important;
 }
 .no1 iframe {
     width: 100%;
-    min-height: 450px;
-    max-height: 500px;
+    min-height: 450px !important;
+    max-height: 500px !important;
     z-index: 100;
 }
 
@@ -65,8 +65,8 @@ iframe {
 }
 
 .show iframe {
-    width: 100%;
-    height: 450px;
+    width: 100% !important;
+    height: 450px !important;
     z-index: 100;
     padding: 3px;
 }
