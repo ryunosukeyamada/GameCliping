@@ -86,7 +86,10 @@ class ClipController extends Controller
             $clip->video_html = '';
         } else {
             $video_items = $listResponse[0];
-            $clip->video_html = $video_items->player['embedHtml'];
+            $video_html = $video_items->player['embedHtml'];
+            $video_html = str_replace('width="480" height="270"','',$video_html);
+            $video_html = str_replace('autoplay;', '', $video_html);
+            $clip->video_html=$video_html;
         }
 
         // レコードを保存
