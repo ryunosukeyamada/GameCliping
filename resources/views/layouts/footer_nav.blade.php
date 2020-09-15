@@ -29,7 +29,7 @@
             <div class="col-md-2 mb-md-0 mb-2">
                 <ul class="list-unstyled">
                     <li>
-                        {{-- <a href="https://www.kiyaku.app/termsOfService/9HWJKz54QB7xbYXbVRpK"><small>管理人</small></a> --}}
+                        <a href="https://ryunosukeyamada.github.io/MyPortFolio_first/"><small>自己紹介</small></a>
                     </li>
                 </ul>
             </div>
