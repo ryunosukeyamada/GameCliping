@@ -48,7 +48,7 @@
             @foreach ($clip->tags as $tag)
                 @if ($loop->first)
                     <div class="card-body p-0 mt-2">
-                        <div class="card-text line-height">
+                        <div class="card-text line-height mt-2">
                 @endif
                 <a href="{{ route('tags.show',['name' => $tag->name]) }}" class="border p-1 mr-1 text-primary">
                     {{ $tag->hash_tag }}
