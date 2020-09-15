@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container" style="min-height: 600px">
+    <div class="container" style="min-height: 86vh">
         <h1 class="text-center mt-3">
             <a href="{{ route('top') }}"><img width="150px" src="{{ secure_asset('img/GameClipingLogo.png') }}" alt="logo"></a>
         </h1>

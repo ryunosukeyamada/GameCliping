@@ -8,7 +8,7 @@
 
     @include('layouts.header_nav')
 
-    <div class="container show" style="min-height: 600px">
+    <div class="container show" style="min-height: 86vh">
         @include('clips.clip')
     </div>
         @include('layouts.footer_nav')

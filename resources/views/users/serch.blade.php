@@ -8,7 +8,7 @@
 
     @include('layouts.header_nav')
 
-    <div class="container" style="min-height: 600px">
+    <div class="container" style="min-height: 83vh">
         <div class="card mt-2">
             <div class="card-body">
                 <button onclick="history.back()" class="btn btn-outline-green float-right">戻る</button>

@@ -8,7 +8,7 @@
     @include('layouts.header_nav')
     @include('clips.clip_count')
     @include('clips.tabs',['clip' =>false,'like' => false,'followClip'=>true,'myClip' =>false])
-    <div class="container-fluid" style="min-height: 600px">
+    <div class="container-fluid" style="min-height: 86vh">
         <div class="row">
             @foreach ($clips as $clip)
                 <div class="col-sm-12 col-md-6 col-lg-4 index">
