@@ -8,12 +8,12 @@
             <!-- ユーザートップ画像 -->
             @if ($user->profile_image === 'default.png')
                 <a href=" {{ route('users.show', ['name' => $user->name]) }}"><img
-                        src="{{ secure_asset('img/default.png') }}" class="rounded-circle mr-3" height="220px" width="220px"
+                        src="{{ secure_asset('img/default.png') }}" class="rounded-circle" height="220px" width="220px"
                         alt="avatar"></a>
             @else
                 <a href=" {{ route('users.show', ['name' => $user->name]) }}"><img
                         src="{{ $user->profile_image }}"
-                        class="rounded-circle mr-3" height="220px" width="220px" alt="avatar"></a>
+                        class="rounded-circle" height="220px" width="220px" alt="avatar"></a>
             @endif
             @auth
                 @if (Auth::user()->name === $user->name)
