@@ -30,5 +30,15 @@ class Clip extends Model
     public function tags(): BelongsToMany {
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
+
+    // 文字列の中のURLを判別する
+    public static function url2link($body, $link_title = null){
+        $pattern = '/(?<!href=")https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+/';
+        $body = preg_replace_callback($pattern, function($matches) use ($link_title) {
+        $link_title = $link_title ?: $matches[0];
+        return "<a href=\"{$matches[0]}\">$link_title</a>";
+        }, $body);
+        return $body;
+    }
     
 }

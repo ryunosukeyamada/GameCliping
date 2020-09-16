@@ -108,7 +108,24 @@ class ClipController extends Controller
     // クリップ詳細
     public function show(Clip $clip)
     {
-        return view('clips.show', ['clip' => $clip]);
+        // YOUTUBE接続
+        $client = new Google_Client();
+        $client->setDeveloperKey(env('GOOGLE_API_KEY'));
+        $youtube = new Google_Service_YouTube($client);
+
+        $VIDEO_ID = $clip->video_id;
+        $listResponse = $youtube->videos->listVideos(['snippet','statistics'],['id'=> $VIDEO_ID]);
+
+        if(empty($listResponse->items)){
+            $items = ['title' => 'Not Video', 'description'=>'','viewCount' => ''];
+        }else {
+            $title = $listResponse->items[0]->snippet->title;
+            $description = $listResponse->items[0]->snippet->description;
+            $viewCount = $listResponse->items[0]->statistics->viewCount;
+            $items = ['title'=>$title, 'description'=>Clip::url2link($description), 'viewCount'=>$viewCount];
+        }
+
+        return view('clips.show', ['clip' => $clip, 'items' => $items]);
     }
 
     // クリップ編集フォーム
