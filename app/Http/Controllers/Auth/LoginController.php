@@ -44,6 +44,16 @@ class LoginController extends Controller
 
 
     // ログアウト後の処理
+    public function logout(Request $request)
+    {
+        if(Auth::check()){
+            Auth::logout();
+            return $this->loggedOut($request) ?: redirect('/');
+        }
+        return redirect('/home');
+    }
+
+
     protected function loggedOut(Request $request){
         return redirect('/home');
     }
