@@ -48,15 +48,12 @@ class LoginController extends Controller
     {
         if(Auth::check()){
             Auth::logout();
-            return $this->loggedOut($request) ?: redirect('/');
+
+            return redirect('/home');
         }
-        return redirect('/home');
+        return redirect('/login');
     }
 
-
-    protected function loggedOut(Request $request){
-        return redirect('/home');
-    }
     // ログイン複数回失敗によるディレイ
     protected $decayMinutes = 3;
 
